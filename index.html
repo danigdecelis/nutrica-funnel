@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutrica - Cocina Saludable | Viandas a domicilio en Asuncion</title>
+  <meta name="description" content="Viandas saludables con entrega a domicilio en todo Asuncion. Planes Saludable, Sin Harina, Veggie, Keto y Nutricional. Suscripciones semanales y mensuales.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --lime: #B5D100;
+      --lime-dark: #8FA300;
+      --dark: #1A1E16;
+      --dark-mid: #252B20;
+      --sage: #6B7A5C;
+      --off-white: #F5F7F0;
+      --white: #FFFFFF;
+      --text: #2A2E24;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Open Sans', sans-serif; color: var(--text); background: var(--white); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%;
+      background: rgba(26, 30, 22, 0.97);
+      backdrop-filter: blur(14px);
+      padding: 14px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      z-index: 100;
+      border-bottom: 1px solid rgba(181,209,0,0.12);
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 14px; }
+
+    /* SVG logo wrapper */
+    .logo-svg-wrap { width: 46px; height: 46px; flex-shrink: 0; }
+
+    .logo-words { line-height: 1; }
+    .logo-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900; font-size: 19px;
+      color: var(--white); letter-spacing: 3px;
+    }
+    .logo-sub {
+      display: block;
+      font-size: 9px; color: var(--lime);
+      letter-spacing: 3px; text-transform: uppercase; margin-top: 3px;
+    }
+
+    .nav-cta {
+      background: var(--lime); color: var(--dark);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 12px;
+      padding: 10px 24px; border-radius: 6px;
+      text-decoration: none; letter-spacing: 1px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--lime-dark); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 140px 40px 100px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1512621776951-a57ef244b92a?w=1400&q=85&fit=crop');
+      background-size: cover; background-position: center;
+      filter: brightness(0.35) saturate(0.8);
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(26,30,22,0.85) 0%, rgba(26,30,22,0.6) 50%, rgba(42,46,32,0.8) 100%);
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 720px; }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(181,209,0,0.15);
+      border: 1px solid rgba(181,209,0,0.4);
+      color: var(--lime);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 3px; text-transform: uppercase;
+      padding: 8px 24px; border-radius: 20px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(36px, 6.5vw, 64px);
+      color: var(--white);
+      line-height: 1.06; margin-bottom: 20px;
+      letter-spacing: -1.5px;
+    }
+    .hero h1 span { color: var(--lime); }
+
+    .hero-sub {
+      font-size: 18px; color: rgba(255,255,255,0.78);
+      margin-bottom: 12px; line-height: 1.6;
+    }
+    .hero-location {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600; font-size: 13px;
+      color: var(--lime); letter-spacing: 1px;
+      margin-bottom: 40px;
+    }
+
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--lime); color: var(--dark);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 14px;
+      padding: 17px 40px; border-radius: 8px;
+      text-decoration: none; letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-cta:hover {
+      background: var(--lime-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(181,209,0,0.3);
+    }
+
+    /* ── MENU SECTION ── */
+    .menus-section {
+      padding: 96px 40px;
+      background: var(--off-white);
+    }
+
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--lime-dark);
+      text-align: center; margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(26px, 4vw, 40px);
+      color: var(--dark);
+      text-align: center; margin-bottom: 48px;
+      letter-spacing: -0.5px;
+    }
+
+    .menu-tabs {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 10px;
+      margin-bottom: 48px;
+    }
+
+    .tab-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 10px 22px; border-radius: 6px;
+      border: 2px solid var(--sage);
+      background: transparent; color: var(--sage);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .tab-btn:hover { background: var(--sage); color: var(--white); border-color: var(--sage); }
+    .tab-btn.active { background: var(--dark); border-color: var(--dark); color: var(--white); }
+
+    .menu-panel { display: none; max-width: 660px; margin: 0 auto; }
+    .menu-panel.active { display: block; }
+
+    .period-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 10px;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--lime-dark);
+      margin: 28px 0 12px;
+    }
+    .period-label:first-child { margin-top: 0; }
+
+    .price-card {
+      background: var(--sage);
+      border-radius: 12px;
+      padding: 20px 26px;
+      margin-bottom: 10px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: transform 0.15s, box-shadow 0.15s;
+      cursor: default;
+    }
+    .price-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(107,122,92,0.28); }
+
+    .price {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900; font-size: 22px;
+      color: var(--white); line-height: 1;
+    }
+    .price-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600; font-size: 10px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--lime); margin-top: 5px;
+    }
+    .price-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 12px;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-align: right; line-height: 1.5;
+    }
+
+    .nutri-note {
+      margin-top: 20px;
+      background: rgba(181,209,0,0.08);
+      border: 1px solid rgba(181,209,0,0.25);
+      border-radius: 10px; padding: 18px 22px;
+      font-size: 14px; color: var(--sage);
+      line-height: 1.75; text-align: center;
+    }
+
+    /* ── OBSERVACIONES ── */
+    .obs-section { background: var(--dark); padding: 72px 40px; }
+
+    .obs-box {
+      max-width: 660px; margin: 0 auto;
+      border: 1px solid rgba(181,209,0,0.18);
+      border-radius: 14px; padding: 36px;
+    }
+
+    .obs-box h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 11px;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--lime); margin-bottom: 24px;
+    }
+
+    .obs-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .obs-list li {
+      font-size: 14px; color: rgba(255,255,255,0.75);
+      line-height: 1.65; padding-left: 20px; position: relative;
+    }
+    .obs-list li::before { content: '•'; color: var(--lime); font-weight: 700; position: absolute; left: 0; }
+
+    .gramajes {
+      margin-top: 24px; padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.8;
+    }
+    .gramajes strong { color: rgba(255,255,255,0.65); }
+
+    /* ── PAYMENT ── */
+    .payment-section { padding: 80px 40px; background: var(--off-white); }
+
+    .payment-card {
+      max-width: 540px; margin: 0 auto;
+      background: var(--dark);
+      border-radius: 16px; padding: 0 40px 36px;
+      overflow: hidden;
+    }
+
+    .payment-card::before {
+      content: ''; display: block;
+      height: 5px; background: var(--lime);
+      margin: 0 -40px 36px;
+    }
+
+    .payment-row {
+      display: flex; align-items: flex-start; gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .payment-row:last-child { border-bottom: none; }
+
+    .pay-dot {
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--lime); flex-shrink: 0; margin-top: 5px;
+    }
+
+    .pay-label {
+      font-size: 10px; color: rgba(255,255,255,0.4);
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;
+    }
+    .pay-value {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 14px;
+      color: var(--white); letter-spacing: 0.3px;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--lime);
+      padding: 96px 40px; text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(26px, 4vw, 44px);
+      color: var(--dark); margin-bottom: 14px; letter-spacing: -0.5px;
+    }
+
+    .cta-section p {
+      font-size: 17px; color: rgba(26,30,22,0.7);
+      margin-bottom: 36px; line-height: 1.6;
+    }
+
+    .cta-wa {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--dark); color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 14px;
+      padding: 18px 42px; border-radius: 8px;
+      text-decoration: none; letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-wa:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(26,30,22,0.35); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark); padding: 40px;
+      text-align: center;
+      border-top: 1px solid rgba(181,209,0,0.1);
+    }
+
+    .footer-logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 10px; }
+    .f-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 18px; color: var(--white); letter-spacing: 4px; }
+    .f-sub { font-size: 10px; color: var(--lime); letter-spacing: 3px; text-transform: uppercase; display: block; margin-top: 2px; }
+    .f-info { margin-top: 14px; font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.8; }
+    .f-ig { color: rgba(181,209,0,0.6); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 12px 20px; }
+      .nav-cta { font-size: 11px; padding: 9px 16px; }
+      .hero { padding: 120px 24px 80px; min-height: auto; }
+      .menus-section { padding: 64px 24px; }
+      .price-card { flex-direction: column; gap: 8px; }
+      .price-desc { text-align: left; }
+      .obs-section { padding: 56px 24px; }
+      .obs-box { padding: 24px; }
+      .payment-section { padding: 64px 24px; }
+      .payment-card { padding: 0 24px 28px; }
+      .payment-card::before { margin: 0 -24px 28px; }
+      .cta-section { padding: 72px 24px; }
+      footer { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <!-- Nutrica logo SVG recreation -->
+      <div class="logo-svg-wrap">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Left leaf (dark forest green) -->
+          <ellipse cx="30" cy="36" rx="11" ry="22" fill="#3A6B35" transform="rotate(-32 30 36)"/>
+          <!-- Right leaf (olive/khaki green) -->
+          <ellipse cx="52" cy="30" rx="11" ry="21" fill="#6B7B3A" transform="rotate(28 52 30)"/>
+          <!-- Front/bottom leaf (lime green) -->
+          <ellipse cx="41" cy="56" rx="10" ry="18" fill="#AACC2E" transform="rotate(8 41 56)"/>
+        </svg>
+      </div>
+      <div class="logo-words">
+        <div class="logo-name">NUTRICA</div>
+        <span class="logo-sub">Cocina Saludable</span>
+      </div>
+    </div>
+    <a href="https://wa.me/595961962851" class="nav-cta" target="_blank">SUSCRIBIRME</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Viandas a domicilio</div>
+      <h1>Come rico,<br>come <span>saludable</span></h1>
+      <p class="hero-sub">Viandas nutritivas y deliciosas preparadas con ingredientes frescos. Planes semanales y mensuales para todos los objetivos.</p>
+      <div class="hero-location">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Entrega en todo Asuncion
+      </div>
+      <a href="#menus" class="hero-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+        VER PLANES Y PRECIOS
+      </a>
+    </div>
+  </section>
+
+  <!-- MENUS -->
+  <section class="menus-section" id="menus">
+    <div class="section-label">Nuestros planes</div>
+    <h2 class="section-title">Elegí tu menu</h2>
+
+    <div class="menu-tabs">
+      <button class="tab-btn active" onclick="showMenu('saludable', this)">SALUDABLE</button>
+      <button class="tab-btn" onclick="showMenu('sin-harina', this)">SIN HARINA</button>
+      <button class="tab-btn" onclick="showMenu('veggie', this)">VEGGIE</button>
+      <button class="tab-btn" onclick="showMenu('keto', this)">KETO</button>
+      <button class="tab-btn" onclick="showMenu('nutricional', this)">PLAN NUTRICIONAL</button>
+    </div>
+
+    <!-- SALUDABLE -->
+    <div class="menu-panel active" id="panel-saludable">
+      <div class="period-label">MENSUAL — 20 DIAS DE ENTREGA</div>
+      <div class="price-card">
+        <div><div class="price">GS. 750.000.-</div><div class="price-sub">18.750 CADA VIANDA</div></div>
+        <div class="price-desc">ALMUERZO<br>Y CENA</div>
+      </div>
+      <div class="price-card">
+        <div><div class="price">GS. 460.000.-</div></div>
+        <div class="price-desc">SOLO<br>ALMUERZO</div>
+      </div>
+      <div class="period-label">SEMANAL</div>
+      <div class="price-card">
+        <div><div class="price">GS. 220.000.-</div></div>
+        <div class="price-desc">ALMUERZO<br>Y CENA</div>
+      </div>
+      <div class="price-card">
+        <div><div class="price">GS. 130.000.-</div></div>
+        <div class="price-desc">SOLO<br>ALMUERZO</div>
+      </div>
+    </div>
+
+    <!-- SIN HARINA -->
+    <div class="menu-panel" id="panel-sin-harina">
+      <div class="period-label">MENSUAL — 20 DIAS DE ENTREGA</div>
+      <div class="price-card">
+        <div><div class="price">GS. 890.000.-</div><div class="price-sub">22.250 CADA VIANDA</div></div>
+        <div class="price-desc">ALMUERZO<br>Y CENA</div>
+      </div>
+      <div class="price-card">
+        <div><div class="price">GS. 500.000.-</div></div>
+        <div class="price-desc">SOLO<br>ALMUERZO</div>
+      </div>
+      <div class="period-label">SEMANAL</div>
+      <div class="price-card">
+        <div><div class="price">GS. 265.000.-</div></div>
+        <div class="price-desc">ALMUERZO<br>Y CENA</div>
+      </div>
+      <div class="price-card">
+        <div><div class="price">GS. 145.000.-</div></div>
+        <div class="price-desc">SOLO<br>ALMUERZO</div>
+      </div>
+    </div>
+
+    <!-- VEGGIE -->
+    <div class="menu-panel" id="panel-veggie">
+      <div class="period-label">MENSUAL — 20 DIAS DE ENTREGA</div>
+      <div class="price-card">
+        <div><div class="price">GS. 880.000.-</div><div class="price-sub">25.000 CADA VIANDA</div></div>
+        <div class="price-desc">ALMUERZO<br>Y CENA</div>
+      </div>
+      <div class="price-card">
+        <div><div class="price">GS. 500.000.-</div></div>
+        <div class="price-desc">SOLO<br>ALMUERZO</div>
+      </div>
+      <div class="period-label">SEMANAL</div>
+      <div class="price-card">
+        <div><div class="price">GS. 220.000.-</div></div>
+        <div class="price-desc">ALMUERZO<br>Y CENA</div>
+      </div>
+      <div class="price-card">
+        <div><div class="price">GS. 130.000.-</div></div>
+        <div class="price-desc">SOLO<br>ALMUERZO</div>
+      </div>
+    </div>
+
+    <!-- KETO -->
+    <div class="menu-panel" id="panel-keto">
+      <div class="period-label">MENSUAL — 20 DIAS DE ENTREGA</div>
+      <div class="price-card">
+        <div><div class="price">GS. 1.020.000.-</div><div class="price-sub">25.500 CADA VIANDA</div></div>
+        <div class="price-desc">ALMUERZO<br>Y CENA</div>
+      </div>
+      <div class="price-card">
+        <div><div class="price">GS. 560.000.-</div></div>
+        <div class="price-desc">SOLO<br>ALMUERZO</div>
+      </div>
+      <div class="period-label">SEMANAL</div>
+      <div class="price-card">
+        <div><div class="price">GS. 298.000.-</div></div>
+        <div class="price-desc">ALMUERZO<br>Y CENA</div>
+      </div>
+      <div class="price-card">
+        <div><div class="price">GS. 160.000.-</div></div>
+        <div class="price-desc">SOLO<br>ALMUERZO</div>
+      </div>
+    </div>
+
+    <!-- PLAN NUTRICIONAL -->
+    <div class="menu-panel" id="panel-nutricional">
+      <div class="period-label">SEMANAL — ALMUERZO Y CENA</div>
+      <div class="price-card">
+        <div><div class="price">GS. 300.000.-</div><div class="price-sub">150 GR DE PROTEINA</div></div>
+        <div class="price-desc">ALMUERZO<br>Y CENA</div>
+      </div>
+      <div class="price-card">
+        <div><div class="price">GS. 330.000.-</div><div class="price-sub">300 GR DE PROTEINA</div></div>
+        <div class="price-desc">ALMUERZO<br>Y CENA</div>
+      </div>
+      <div class="nutri-note">
+        Para la suscripcion mensual de 20 dias contamos con <strong>precios super accesibles</strong>.<br>
+        Consulta por WhatsApp para mas informacion.
+      </div>
+    </div>
+  </section>
+
+  <!-- OBSERVACIONES -->
+  <section class="obs-section">
+    <div class="obs-box">
+      <h3>Observaciones</h3>
+      <ul class="obs-list">
+        <li>Suscripcion con pago anticipado para asegurar tu lugar y horario de entrega.</li>
+        <li>La suspension de una vianda o cambio de ubicacion para las entregas se realizan con 24 hs. de anticipacion.</li>
+        <li>La vianda suspendida se entrega al dia siguiente con la vianda correspondiente a ese dia.</li>
+        <li>El pago anticipado incluye delivery sin costo.</li>
+        <li>En caso de incumplir el plan, se aplicara el costo de entrega diaria.</li>
+        <li>Las viandas tienen menu establecido; cambios o modificaciones tienen costo adicional.</li>
+      </ul>
+      <div class="gramajes">
+        <strong>Gramajes aproximados</strong><br>
+        Saludable / Sin harina / Veggie: 350 a 380 g &nbsp;|&nbsp; Keto: 400 g
+      </div>
+    </div>
+  </section>
+
+  <!-- PAYMENT -->
+  <section class="payment-section">
+    <div class="section-label">Medios de pago</div>
+    <h2 class="section-title">Datos bancarios</h2>
+    <div class="payment-card">
+      <div class="payment-row">
+        <div class="pay-dot"></div>
+        <div><div class="pay-label">Titular</div><div class="pay-value">MARTA LORENA MONGES BENITEZ</div></div>
+      </div>
+      <div class="payment-row">
+        <div class="pay-dot"></div>
+        <div><div class="pay-label">Alias (C.I.)</div><div class="pay-value">1225410</div></div>
+      </div>
+      <div class="payment-row">
+        <div class="pay-dot"></div>
+        <div><div class="pay-label">Banco</div><div class="pay-value">UENO BANK</div></div>
+      </div>
+      <div class="payment-row">
+        <div class="pay-dot"></div>
+        <div><div class="pay-label">Cuenta</div><div class="pay-value">CAJA DE AHORRO: 14951689</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Listo para empezar?</h2>
+    <p>Consultas y suscripciones al <strong>0961 962 851</strong><br>Entregamos en todo Asuncion</p>
+    <a href="https://wa.me/595961962851" class="cta-wa" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      ESCRIBINOS POR WHATSAPP
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <svg width="36" height="36" viewBox="0 0 80 80" fill="none">
+        <ellipse cx="30" cy="36" rx="11" ry="22" fill="#3A6B35" transform="rotate(-32 30 36)"/>
+        <ellipse cx="52" cy="30" rx="11" ry="21" fill="#6B7B3A" transform="rotate(28 52 30)"/>
+        <ellipse cx="41" cy="56" rx="10" ry="18" fill="#AACC2E" transform="rotate(8 41 56)"/>
+      </svg>
+      <div>
+        <div class="f-name">NUTRICA</div>
+        <span class="f-sub">Cocina Saludable</span>
+      </div>
+    </div>
+    <div class="f-info">
+      <span class="f-ig">@nutricapy</span><br>
+      0961 962 851 &nbsp;|&nbsp; Asuncion, Paraguay
+    </div>
+  </footer>
+
+  <script>
+    function showMenu(id, btn) {
+      document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('panel-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
